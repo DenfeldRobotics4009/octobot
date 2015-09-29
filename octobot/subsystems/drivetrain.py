@@ -3,7 +3,7 @@ import math
 
 import wpilib
 from wpilib.command import Subsystem
-
+from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
 class Drivetrain(Subsystem):
 	'''Class drivetrain uses many things to do many other things.'''
 
@@ -11,15 +11,16 @@ class Drivetrain(Subsystem):
 		super().__init__()
 		self.robot = robot
 		
-		self.drive = wpilib.RobotDrive(DriveMotor(0), DriveMotor(1), DriveMotor(2), DriveMotor(3))
-		self.drive_aux = wpilibRobotDrive(DriveMotor(4), DriveMotor(5), DriveMotor(6), DriveMotor(7))
-		self.drive.setExpiration(0.1)
+		self.nw = wpilib.Talon(0) 
+		self.n = wpilib.Talon(1)
+		self.ne = wpilib.Talon(2)
+		#self.Extraverted iNtuiton... no, wait...
+		self.e = wpilib.Talon(3)
+		self.se = wpilib.Talon(4)
+		self.s = wpilib.Talon(5)
+		self.sw = wpilib.Talon(6)
+		self.w = wpilib.Talon(7)
 
-		self.drive.setInvertedMotor(self.drive.MotorType.kFrontRight, True)
-		self.drive.setInvertedMotor(self.drive.MotorType.kRearRight, True)
-		self.drive_aux.setInvertedMotor(self.drive_aux.setInvertedMotor.MotorType.kFrontRight, True)
-		self.drive_aux.setInvertedMotor(self.drive_aux.setInvertedMotor.MotorType.kRearRight, True)
-		
 		self.x = 0
 		self.y = 0
 		self.rotation = 0
@@ -31,18 +32,12 @@ class Drivetrain(Subsystem):
 	def log(self):
 		pass
 
-	def driveJoystick(self, joystick):
-		x = drive_control(joystick.getX(), precision)
-		y = drive_control(joystick.getY(), precision)
-		z = precision_mode(dead_zone(joystick.getRawAxis(3)*.75, .1), precision)
-		if x>1:
-			x=1
-		elif x<-1:
-			x=-1
-		self.driveManual(x,y,z)
-
-	def driveManual(self, x, y, rotation):
-		self.x, self.y, self.rotation = x, y, rotation
-		self.drive.mecanumDrive_Cartesian(x, y, rotation, 0)
-		self.drive_aux.mecanumDrive_Cartesian(x, y, rotation, 0)
-
+	def manualSet(self, output):
+		self.nw.set(output)
+        self.n.set(output)
+        self.ne.set(output)
+        self.e.set(output)
+        self.se.set(output)
+        self.s.set(output)
+        self.sw.set(output)
+        self.w.set(output)
