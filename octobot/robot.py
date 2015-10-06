@@ -10,39 +10,39 @@ from subsystems.drivetrain import Drivetrain
 
 class OctoBot(wpilib.SampleRobot):
 
-	def robotInit(self):
-		self.drivetrain = Drivetrain(self)
-	
-	def autonomous(self):
-		while self.isAutonomous() and self.isEnabled():
-			Scheduler.getInstance().run()
-			self.log()
-			wpilib.Timer.delay(.005)
+    def robotInit(self):
+        self.drivetrain = Drivetrain(self)
 
-	def operatorControl(self):
-		self.drivetrain.drive.setSafetyEnabled(True)
-		self.drivetrain.drive_aux.setSafetyEnabled(True)
-		joystick = self.oi.getJoystick()
+    def autonomous(self):
+        while self.isAutonomous() and self.isEnabled():
+            Scheduler.getInstance().run()
+            self.log()
+            wpilib.Timer.delay(.005)
 
-		while self.isOperatorControl() and self.isEnabled():
-			self.log()
-			Scheduler.getInstance().run()
-			wpilib.Timer.delay(.005)
+    def operatorControl(self):
+        self.drivetrain.drive.setSafetyEnabled(True)
+        self.drivetrain.drive_aux.setSafetyEnabled(True)
+        joystick = self.oi.getJoystick()
 
-	def disabled(self):
-		"""Stuff to do whilst disabled."""
+        while self.isOperatorControl() and self.isEnabled():
+            self.log()
+            Scheduler.getInstance().run()
+            wpilib.Timer.delay(.005)
 
-		while self.isDisabled():
-			self.log()
-			wpilib.Timer.delay(.005)
+    def disabled(self):
+        """Stuff to do whilst disabled."""
 
-	def test(self):
-		"""No tests"""
-		pass
+        while self.isDisabled():
+            self.log()
+            wpilib.Timer.delay(.005)
 
-	def log(self):
-		"""It's big, it's heavy, it's wood."""
-		self.drivetrain.log()
+    def test(self):
+        """No tests"""
+        pass
+
+    def log(self):
+        """It's big, it's heavy, it's wood."""
+        self.drivetrain.log()
 
 if __name__ == "__main__":
-	wpilib.run(OctoBot)
+    wpilib.run(OctoBot)
