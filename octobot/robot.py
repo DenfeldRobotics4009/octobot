@@ -8,10 +8,13 @@ from oi import OI
 
 from subsystems.drivetrain import Drivetrain
 
+from drive_control import dead_zone
+
 class OctoBot(wpilib.SampleRobot):
 
     def robotInit(self):
         self.drivetrain = Drivetrain(self)
+        self.oi = OI(self)
 
     def autonomous(self):
         while self.isAutonomous() and self.isEnabled():

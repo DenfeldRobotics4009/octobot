@@ -17,6 +17,7 @@ class OctoDriveWithJoystick(Command):
         return False
 
     def end(self):
+        self.robot.drivetrain.driveManual(0,0,0)
         pass
 
     def interrupted(self):
