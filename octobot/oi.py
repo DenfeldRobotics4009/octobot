@@ -1,5 +1,6 @@
 __author__ = ' '
 
+#May need more libraries in the future, esp. once everything else is properly implemented.
 import wpilib
 from networktables import NetworkTable
 from wpilib.buttons import JoystickButton, InternalButton
@@ -8,11 +9,11 @@ from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
 class OI:
     """Button mapping goes here."""
 
+    #Currently a single-joystick setup. May want to change that later if subsystems are added.
     self.stick = wpilib.Joystick(0)
     self.smart_dashboard = NetworkTable.getTable("SmartDashboard")
 
-    #Buttons
-    #-------
+    #Buttons based off of Logitech Attack 3 joystick used on Delta.
     trigger = JoystickButton(self.stick, 1)
     thumb = JoystickButton(self.stick, 2)
     three = JoystickButton(self.stick, 3)

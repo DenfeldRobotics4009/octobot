@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-__author__ = ' '
+__author__ = 'nikolojedison'
 
+#May need more libraries in the future, esp. once everything else is properly implemented.
 import wpilib
 import networktables
 from wpilib.command import Scheduler
@@ -12,10 +13,13 @@ from drive_control import dead_zone
 
 class OctoBot(wpilib.SampleRobot):
 
+    #Initialise the robot.
     def robotInit(self):
         self.drivetrain = Drivetrain(self)
         self.oi = OI(self)
-
+    
+    #Probably will be changed once macros are added, currently just
+    #placeholder text to make sure nothing explodes.
     def autonomous(self):
         while self.isAutonomous() and self.isEnabled():
             Scheduler.getInstance().run()
@@ -26,6 +30,7 @@ class OctoBot(wpilib.SampleRobot):
         self.drivetrain.drive.setSafetyEnabled(True)
         self.drivetrain.drive_aux.setSafetyEnabled(True)
         joystick = self.oi.getJoystick()
+        #Should look into whether buttons need to be imported here as well.
 
         while self.isOperatorControl() and self.isEnabled():
             self.log()
@@ -41,10 +46,12 @@ class OctoBot(wpilib.SampleRobot):
 
     def test(self):
         """No tests"""
+        #No tests. Probably something to figure out sometime.
         pass
 
     def log(self):
         """It's big, it's heavy, it's wood."""
+        #SOMEDAY WE WILL FIGURE OUT LOGGING. I PROMISE.
         self.drivetrain.log()
 
 if __name__ == "__main__":
