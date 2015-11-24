@@ -2,6 +2,7 @@ __author__ = "nikolojedison"
 import math
 import wpilib
 from wpilib.command import Subsystem
+from drive_control import *
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
 
 class Drivetrain(Subsystem):

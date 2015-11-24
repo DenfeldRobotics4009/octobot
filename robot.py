@@ -9,7 +9,7 @@ from oi import OI
 
 from subsystems.drivetrain import Drivetrain
 
-from drive_control import dead_zone
+from drive_control import *
 
 class OctoBot(wpilib.SampleRobot):
 

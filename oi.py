@@ -4,7 +4,9 @@ __author__ = ' '
 import wpilib
 from networktables import NetworkTable
 from wpilib.buttons import JoystickButton, InternalButton
+
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
+from pov_button import POVButton
 
 class OI:
     """Button mapping goes here."""
