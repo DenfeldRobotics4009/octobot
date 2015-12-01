@@ -7,6 +7,8 @@ from wpilib.buttons import JoystickButton, InternalButton
 
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
 from pov_button import POVButton
+from commands.play_macro import PlayMacro
+from commands.record_macro import RecordMacro
 
 class OI:
     """Button mapping goes here."""
