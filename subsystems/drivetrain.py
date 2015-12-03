@@ -1,9 +1,25 @@
 __author__ = "nikolojedison"
 import math
+
 import wpilib
 from wpilib.command import Subsystem
-from drive_control import *
+
+from utilities.drive_control import *
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
+from utilities.imu_simple import IMUSimple
+
+class GyroDummy:
+    """Makes the sim happy. Written by Aux, copied from 2015 code"""
+    n = 0
+    def getYaw(self):
+        n = self.n
+        n = n+1
+        if n > 180:
+            n = n-360
+        elif n < -180:
+            m = n+360
+        self.n = n
+        return n
 
 class Drivetrain(Subsystem):
     '''Class drivetrain uses many things to do many other things.'''
@@ -11,6 +27,15 @@ class Drivetrain(Subsystem):
     def __init__(self, robot):
         super().__init__()
         self.robot = robot
+        
+        if robot.isReal():
+            self.gyro = IMUSimple()
+        else:
+            self.gyro = GyroDummy()
+
+        self.x = 0
+        self.y = 0
+        self.rotation = 0
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
 	    
