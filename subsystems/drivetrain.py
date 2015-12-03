@@ -28,11 +28,14 @@ class Drivetrain(Subsystem):
         super().__init__()
         self.robot = robot
         
+        #If the robot is real, use the IMUSimple library...
         if robot.isReal():
             self.gyro = IMUSimple()
+        #...but if the robot isn't real, use the dummy library (defined on lines 11-23)
         else:
             self.gyro = GyroDummy()
 
+        #Gyro definitions, I think...
         self.x = 0
         self.y = 0
         self.rotation = 0
@@ -58,10 +61,12 @@ class Drivetrain(Subsystem):
 
     def log(self):
         pass
-        #Still no logging implementation. I could probably figure out something to put here, though...
+        #Still no logging implementation.
 
     def driveJoystick(self, joystick):
+        #Start precision mode
 	    precision = True
+        #set the axes & pass them to the drive_control utility library
 	    x = drive_control(joystick.getX(), precision)
 	    y = drive_control(joystick.getY(), precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(3)*.75, .1), precision)
@@ -70,6 +75,7 @@ class Drivetrain(Subsystem):
 		    x=1
 	    elif x<-1:
 		    x=-1
+            
 	    self.driveManual(x,y,z)
 	
     def driveManual(self, x, y, rotation):
