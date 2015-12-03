@@ -1,0 +1,9 @@
+Idea #1: Compass-based field orientation
+-Get compass value at start of match from IMUSimple library
+-Use DriverStation.getAlliance() to get alliance
+-Get field orientation for event from radio button on driver station (Blue North, Blue South, Blue East, Blue West)
+-based on value for getAlliance() and value recieved from driver station, figure out how the joystick will work
+
+#2: gyro-based field orientation
+-Get gyro value at start of match
+-gyro 0 = robot forward, gyro 180 = robot backward, etc (or something idk)
