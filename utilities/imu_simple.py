@@ -67,3 +67,5 @@ class IMUSimple(threading.Thread):
     def getCompass(self):
         with self.mutex:
             return self.compass
+        #if we can get compass we can likely get the field-oriented setup going a lot easier. Depends on how everything works, though. 
+        #Also, I forsee some weirdness with field alignment between matches...
