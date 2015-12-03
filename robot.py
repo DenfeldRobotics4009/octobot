@@ -9,7 +9,7 @@ from oi import OI
 
 from subsystems.drivetrain import Drivetrain
 
-from drive_control import *
+from utilities.drive_control import *
 from commands.play_macro import PlayMacro
 
 class OctoBot(wpilib.SampleRobot):
