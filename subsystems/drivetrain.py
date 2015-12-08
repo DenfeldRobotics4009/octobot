@@ -41,16 +41,10 @@ class Drivetrain(Subsystem):
         self.rotation = 0
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
-	    
-        #These motors are on the "corners" of the robot, however that's defined.
-        self.drive_diagonal = wpilib.RobotDrive(DriveMotor(0), DriveMotor(2), DriveMotor(4), DriveMotor(6))
-	    #These move on the x-axis...
+	    self.drive_diagonal = wpilib.RobotDrive(DriveMotor(0), DriveMotor(2), DriveMotor(4), DriveMotor(6))
         self.drive_x = wpilib.RobotDrive(DriveMotor(1), DriveMotor(5))
-	    #...and these on the y-axis.
         self.drive_y = wpilib.RobotDrive(DriveMotor(3), DriveMotor(7))
-	    #Make sure everything is inverted properly. Might need some tweaking, currently based off of layout for Lopez Jr.
-	    self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
+        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
         self.drive_x.setInvertedMotor(self.drive_x.MotorType.kRight, True)
         self.drive_y.setInvertedMotor(self.drive_y.MotorType.kRight, True)
 	
