@@ -1,9 +1,5 @@
  #!/usr/bin/env python3
-<<<<<<< HEAD:octobot/robot.py
 __author__ = "nikolojedison"
-=======
-__author__ = 'nikolojedison'
->>>>>>> 79b545531e6115bf6f1e28c8e7d71d6614ec6f30:robot.py
 
 #May need more libraries in the future, esp. once everything else is properly implemented.
 import wpilib
