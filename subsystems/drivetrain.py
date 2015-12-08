@@ -81,7 +81,7 @@ class Drivetrain(Subsystem):
     def driveManual(self, x, y, rotation):
 	    self.x, self.y, self.rotation = x, y, rotation
 	    #Set the corner wheels to be mecanums.
-        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, 0)
+        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, self.gyro.getYaw())
 	    #Set the x & y axis wheels to be arcade. These'll run at the same time as the corner wheels if they're 
 	    #working properly.
         self.drive_x.arcadeDrive(x, rotation)
