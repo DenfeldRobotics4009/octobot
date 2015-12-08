@@ -31,6 +31,6 @@ class OI:
     eleven = JoystickButton(self.stick, 11)
     twelve = JoystickButton(self.stick, 12)
   
-    def getJoystick(self):
+    def getStick(self):
         """Drive joystick."""
         return self.stick
