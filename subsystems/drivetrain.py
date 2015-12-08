@@ -41,7 +41,7 @@ class Drivetrain(Subsystem):
         self.rotation = 0
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
-	    self.drive_diagonal = wpilib.RobotDrive(DriveMotor(0), DriveMotor(2), DriveMotor(4), DriveMotor(6))
+	self.drive_diagonal = wpilib.RobotDrive(DriveMotor(0), DriveMotor(2), DriveMotor(4), DriveMotor(6))
         self.drive_x = wpilib.RobotDrive(DriveMotor(1), DriveMotor(5))
         self.drive_y = wpilib.RobotDrive(DriveMotor(3), DriveMotor(7))
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
