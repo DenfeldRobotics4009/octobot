@@ -49,10 +49,10 @@ class Drivetrain(Subsystem):
 	    #...and these on the y-axis.
         self.drive_y = wpilib.RobotDrive(DriveMotor(3), DriveMotor(7))
 	    #Make sure everything is inverted properly. Might need some tweaking, currently based off of layout for Lopez Jr.
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-	    self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
-	    self.drive_x.setInvertedMotor(self.drive_x.MotorType.kRight, True)
-	    self.drive_y.setInvertedMotor(self.drive_y.MotorType.kRight, True)
+	    self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
+        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
+        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kRight, True)
+        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kRight, True)
 	
 
     def initDefaultCommand(self):
