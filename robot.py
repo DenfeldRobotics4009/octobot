@@ -28,7 +28,7 @@ class OctoBot(wpilib.SampleRobot):
             wpilib.Timer.delay(.005)
 
     def operatorControl(self):
-        joystick = self.oi.stick.getJoystick()
+        joystick = self.oi.stick.getStick()
         #Should look into whether buttons need to be imported here as well.
 
         while self.isOperatorControl() and self.isEnabled():
