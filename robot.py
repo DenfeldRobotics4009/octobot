@@ -28,8 +28,7 @@ class OctoBot(wpilib.SampleRobot):
             wpilib.Timer.delay(.005)
 
     def operatorControl(self):
-        self.drivetrain.drive.setSafetyEnabled(True)
-        self.drivetrain.drive_aux.setSafetyEnabled(True)
+        self.drivetrain.setSafetyEnabled(True)
         joystick = self.oi.getJoystick()
         #Should look into whether buttons need to be imported here as well.
 
