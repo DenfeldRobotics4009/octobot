@@ -45,8 +45,8 @@ class Drivetrain(Subsystem):
         self.drive_x = wpilib.RobotDrive(DriveMotor(1), DriveMotor(5))
         self.drive_y = wpilib.RobotDrive(DriveMotor(3), DriveMotor(7))
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kRight, True)
-        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kRight, True)
+        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
+        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontRight, True)
 	
 
     def initDefaultCommand(self):
