@@ -47,6 +47,9 @@ class Drivetrain(Subsystem):
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
         self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
         self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontRight, True)
+        self.drive_diagonal.controllerClass(CANTalon())
+        self.drive_x.controllerClass(CANTalon())
+        self.drive_y.controllerClass(CANTalon())
 	
 
     def initDefaultCommand(self):
