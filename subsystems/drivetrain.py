@@ -45,10 +45,10 @@ class Drivetrain(Subsystem):
         self.front_right_motor = wpilib.CANTalon(2)
         self.rear_right_motor = wpilib.CANTalon(4)
         self.rear_left_motor = wpilib.CANTalon(6)
-        self.top_motor = wpilib.CANTalon(1)
+        self.top_motor = wpilib.CANTalon(0)
         self.bottom_motor = wpilib.CANTalon(5)
-        self.left_motor = wpilib.CANTalon(3)
-        self.right_motor = wpilib.CANTalon(7)
+        self.left_motor = wpilib.CANTalon(7)
+        self.right_motor = wpilib.CANTalon(3)
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
         self.drive_diagonal = wpilib.RobotDrive(self.front_left_motor, self.front_right_motor, self.rear_right_motor, self.rear_left_motor)
