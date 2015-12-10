@@ -13,7 +13,7 @@ class OctoDriveWithJoystick(Command):
         self.requires(self.robot.drivetrain)
 
     def execute(self):
-        self.robot.drivetrain.driveJoystick(self.robot.oi.stick.getStick())
+        self.robot.drivetrain.driveJoystick(self.robot.oi.getStick())
 
     def isFinished(self):
         return False
