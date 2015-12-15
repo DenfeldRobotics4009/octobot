@@ -49,10 +49,6 @@ class Drivetrain(Subsystem):
         self.drive_diagonal = wpilib.RobotDrive(self.front_left_motor, self.front_right_motor, self.rear_right_motor, self.rear_left_motor)
         self.drive_x = wpilib.RobotDrive(self.top_motor, self.bottom_motor)
         self.drive_y = wpilib.RobotDrive(self.left_motor, self.right_motor)
-        #Currently inverted motors: Diagonal FrontRight CANTalon(1), Diagonal RearRight CANTalon(3), X FrontRight CANTalon(4), Y FrontRight CANTalon(2), 
-        #Y FrontLeft CANTalon(6)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
         self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
         self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontRight, True)
 
