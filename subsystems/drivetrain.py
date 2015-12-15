@@ -27,7 +27,7 @@ class Drivetrain(Subsystem):
     def __init__(self, robot):
         super().__init__()
         self.robot = robot
-        
+
         self.gyro = GyroDummy()
 
         #Gyro definitions, I think...
