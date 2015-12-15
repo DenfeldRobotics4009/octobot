@@ -6,7 +6,7 @@ from wpilib.command import Subsystem
 
 from utilities.drive_control import *
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
-from utilities.imu_simple import IMUSimple
+#from utilities.imu_simple import IMUSimple
 
 class GyroDummy:
     """Makes the sim happy. Written by Aux, copied from 2015 code"""
@@ -30,7 +30,8 @@ class Drivetrain(Subsystem):
         
         #If the robot is real, use the IMUSimple library...
         if robot.isReal():
-            self.gyro = IMUSimple()
+            pass
+            #self.gyro = IMUSimple()
         #...but if the robot isn't real, use the dummy library (defined on lines 11-23)
         else:
             self.gyro = GyroDummy()
