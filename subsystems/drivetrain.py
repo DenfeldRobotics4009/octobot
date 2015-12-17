@@ -76,10 +76,10 @@ class Drivetrain(Subsystem):
 	    self.driveManual(x,y,z)
 	
     def driveManual(self, x, y, rotation):
-	    self.x, self.y, self.rotation = x, y, rotation
+            self.x, self.y, self.rotation = x, y, rotation
 
 	    self.drive_x.arcadeDrive(x, rotation)
 	    self.drive_y.arcadeDrive(y, rotation)
         
-        self.drive_a.arcadeDrive(x, y, rotation)
-        self.drive_b.arcadeDrive(y, x, rotation
+            self.drive_a.arcadeDrive(x, y, rotation)
+            self.drive_b.arcadeDrive(y, x, rotation
