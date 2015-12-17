@@ -36,24 +36,24 @@ class Drivetrain(Subsystem):
         self.rotation = 0
         
         #Motor definitions
-        self.front_left_motor = wpilib.CANTalon(1)
+        self.one = wpilib.CANTalon(1)
         self.front_right_motor = wpilib.CANTalon(6)
         self.rear_right_motor = wpilib.CANTalon(0)
-        self.rear_left_motor = wpilib.CANTalon(2)
+        self.two = wpilib.CANTalon(2)
         self.top_motor = wpilib.CANTalon(7)
         self.bottom_motor = wpilib.CANTalon(4)
-        self.left_motor = wpilib.CANTalon(5)
-        self.right_motor = wpilib.CANTalon(3)
+        self.five = wpilib.CANTalon(5)
+        self.three = wpilib.CANTalon(3)
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
-        self.drive_diagonal = wpilib.RobotDrive(self.front_left_motor, self.front_right_motor, self.rear_right_motor, self.rear_left_motor)
+        self.drive_diagonal = wpilib.RobotDrive(self.one, self.front_right_motor, self.rear_right_motor, self.two)
         self.drive_x = wpilib.RobotDrive(self.top_motor, self.bottom_motor)
-        self.drive_y = wpilib.RobotDrive(self.left_motor, self.right_motor)
+        self.drive_y = wpilib.RobotDrive(self.five, self.three)
+        #switch 2
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
         self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
-        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontRight, True)
+        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontLeft, True)
 
 	
 
