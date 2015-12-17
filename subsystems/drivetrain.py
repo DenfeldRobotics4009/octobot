@@ -80,5 +80,6 @@ class Drivetrain(Subsystem):
 
 	    self.drive_x.arcadeDrive(x, rotation)
 	    self.drive_y.arcadeDrive(y, rotation)
+        
         self.drive_a.arcadeDrive(x, rotation)
         self.drive_b.arcadeDrive(y, rotation)
