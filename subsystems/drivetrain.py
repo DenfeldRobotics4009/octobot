@@ -34,7 +34,7 @@ class Drivetrain(Subsystem):
         self.x = 0
         self.y = 0
         self.rotation = 0
-        
+
         #Motor definitions
         self.one = wpilib.CANTalon(1)
         self.six = wpilib.CANTalon(6)
@@ -44,14 +44,10 @@ class Drivetrain(Subsystem):
         self.four = wpilib.CANTalon(4)
         self.five = wpilib.CANTalon(5)
         self.three = wpilib.CANTalon(3)
-	    
+
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
         self.drive_x = wpilib.RobotDrive(self.seven, self.four)
         self.drive_y = wpilib.RobotDrive(self.five, self.three)
-        self.drive_a = wpilib.RobotDrive(self.one, self.zed)
-        self.drive_b = wpilib.RobotDrive(self.six, self.two)
-        self.drive_a.setInvertedMotor(self.drive_a.MotorType.kFrontRight, True)
-	
 
     def initDefaultCommand(self):
         '''When no other command is running, let the operator drive around using the joystick.'''
@@ -68,17 +64,19 @@ class Drivetrain(Subsystem):
 	    x = drive_control(joystick.getX(), precision)
 	    y = drive_control(joystick.getY(), precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(3)*.75, .1), precision)
-	
+
 	    if x>1:
 		    x=1
 	    elif x<-1:
 		    x=-1
-            
+
 	    self.driveManual(x,y,z)
-	
-    def driveManual(self, x, y, rotation):
-            self.x, self.y, self.rotation = x, y, rotation
-            self.drive_x.arcadeDrive(x, rotation)
-            self.drive_y.arcadeDrive(y, rotation)        
-            self.drive_a.arcadeDrive(x, y, rotation)
-            self.drive_b.arcadeDrive(y, x, rotation)
+
+    def driveManual(self, x, y, z):
+            self.x, self.y, self.z = x, y, z
+            self.drive_x.arcadeDrive(x, z)
+            self.drive_y.arcadeDrive(y, z)
+            self.one.set(x, y)
+            self.zed.set(y, x)
+            self.six.set(y, x)
+            self.two.set(x, y)
