@@ -52,8 +52,8 @@ class Drivetrain(Subsystem):
         #switch 2
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
-        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
-        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontLeft, True)
+        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontLeft, True)
+        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontRight, True)
 
 	
 
