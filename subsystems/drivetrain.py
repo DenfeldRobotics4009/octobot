@@ -48,7 +48,7 @@ class Drivetrain(Subsystem):
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
         self.drive_diagonal = wpilib.RobotDrive(self.one, self.six, self.zed, self.two)
         self.drive_x = wpilib.RobotDrive(self.seven, self.four)
-        self.drive_y = wpilib.RobotDrive(-self.five, -self.three)
+        self.drive_y = wpilib.RobotDrive(self.five, self.three)
         #switch 2
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
         self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
