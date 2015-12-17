@@ -46,15 +46,10 @@ class Drivetrain(Subsystem):
         self.three = wpilib.CANTalon(3)
 	    
         #This... might work? Maybe? Needs testing, or at the very least a sim run.
-        self.drive_diagonal = wpilib.RobotDrive(self.one, self.six, self.zed, self.two)
         self.drive_x = wpilib.RobotDrive(self.seven, self.four)
         self.drive_y = wpilib.RobotDrive(self.five, self.three)
-        #switch 2
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
-        self.drive_x.setInvertedMotor(self.drive_x.MotorType.kFrontRight, True)
-        self.drive_y.setInvertedMotor(self.drive_y.MotorType.kFrontLeft, True)
-
+        self.drive_a = wpilib.RobotDrive(self.one, self.zed)
+        self.drive_b = wpilib.RobotDrive(self.six, self.two)
 	
 
     def initDefaultCommand(self):
@@ -82,9 +77,8 @@ class Drivetrain(Subsystem):
 	
     def driveManual(self, x, y, rotation):
 	    self.x, self.y, self.rotation = x, y, rotation
-	    #Set the corner wheels to be mecanums.
-	    self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, 0)
-	    #Set the x & y axis wheels to be arcade. These'll run at the same time as the corner wheels if they're 
-	    #working properly.
+
 	    self.drive_x.arcadeDrive(x, rotation)
 	    self.drive_y.arcadeDrive(y, rotation)
+        self.drive_a.arcadeDrive(x, rotation)
+        self.drive_b.arcadeDrive(y, rotation)
