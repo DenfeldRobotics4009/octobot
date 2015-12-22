@@ -81,18 +81,19 @@ class Drivetrain(Subsystem):
             self.seven.set(-x)
             self.five.set(-y)
             self.three.set(y)
-            if y != 0:
-                self.six.set(-y)
-                self.one.set(y)
-                self.five.set(-y)
-                self.three.set(y)
-                self.two.set(y)
-                self.zed.set(-y)
 
-            elif x != 0:
+            if x > 0.0625 or x < -0.0625 :
                 self.six.set(-x)
                 self.one.set(-x)
                 self.four.set(x)
                 self.seven.set(-x)
                 self.two.set(x)
                 self.zed.set(x)
+
+            elif y > 0.0625 or y < -0.0625:
+                self.six.set(-y)
+                self.one.set(y)
+                self.five.set(-y)
+                self.three.set(y)
+                self.two.set(y)
+                self.zed.set(-y)
