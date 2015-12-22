@@ -86,8 +86,8 @@ class Drivetrain(Subsystem):
                 self.zed.set(-y)
             elif x != 0:
                 self.six.set(-x)
-                self.one.set(x)
-                self.four.set(-x)
-                self.seven.set(x)
+                self.one.set(-x)
+                self.four.set(x)
+                self.seven.set(-x)
                 self.two.set(x)
-                self.zed.set(-x)
+                self.zed.set(x)
