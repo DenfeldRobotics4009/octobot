@@ -71,9 +71,15 @@ class Drivetrain(Subsystem):
     def driveManual(self, x, y):
         #6 1, 5 3, 2 0
             self.x, self.y = x, y
-            self.six.set(x)
-            self.one.set(x)
-            self.four.set(x)
-            self.seven.set(x)
-            self.two.set(x)
-            self.zed.set(x)
+        #    self.six.set(x)
+        #    self.one.set(x)
+        #    self.four.set(x)
+        #    self.seven.set(x)
+        #    self.two.set(x)
+        #    self.zed.set(x)
+            self.six.set(y)
+            self.one.set(y)
+            self.five.set(y)
+            self.three.set(y)
+            self.two.set(y)
+            self.zed.set(y)
