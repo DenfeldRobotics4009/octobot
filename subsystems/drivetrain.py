@@ -45,10 +45,6 @@ class Drivetrain(Subsystem):
         self.five = wpilib.CANTalon(5)
         self.three = wpilib.CANTalon(3)
 
-        #This... might work? Maybe? Needs testing, or at the very least a sim run.
-        self.drive_x = wpilib.RobotDrive(self.seven, self.four)
-        self.drive_y = wpilib.RobotDrive(self.five, self.three)
-
     def initDefaultCommand(self):
         '''When no other command is running, let the operator drive around using the joystick.'''
         self.setDefaultCommand(OctoDriveWithJoystick(self.robot))
@@ -70,13 +66,14 @@ class Drivetrain(Subsystem):
 	    elif x<-1:
 		    x=-1
 
-	    self.driveManual(x,y,z)
+	    self.driveManual(x,y,rotation)
 
-    def driveManual(self, x, y, z):
-            self.x, self.y, self.z = x, y, z
-            self.drive_x.arcadeDrive(x, z)
-            self.drive_y.arcadeDrive(y, z)
-            self.one.set(x, y)
-            self.zed.set(y, x)
-            self.six.set(y, x)
-            self.two.set(x, y)
+    def driveManual(self, x, y, rotation):
+        #6 1, 5 3, 2 0
+            self.x, self.y, self.rotation = x, y, rotation
+            self.six.set(x, y, rotation)
+            self.one.set(x, y, rotation)
+            self.five.set(x, y, rotation)
+            self.three.set(x, y, rotation)
+            self.two.set(x, y, rotation)
+            self.zed.set(x, y, rotation)
