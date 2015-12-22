@@ -66,17 +66,10 @@ class Drivetrain(Subsystem):
 	    elif x<-1:
 		    x=-1
 
-	    self.driveManual(x, y)
+	    self.driveManual(x, y, z)
 
-    def driveManual(self, x, y):
-        #6 1, 5 3, 2 0
-            self.x, self.y = x, y
-        #    self.six.set(x)
-        #    self.one.set(x)
-        #    self.four.set(x)
-        #    self.seven.set(x)
-        #    self.two.set(x)
-        #    self.zed.set(x)
+    def driveManual(self, x, y, z):
+            self.x, self.y, self.z = x, y, z
             self.four.set(x)
             self.seven.set(-x)
             self.five.set(-y)
