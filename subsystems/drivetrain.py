@@ -96,7 +96,7 @@ class Drivetrain(Subsystem):
                 self.seven.set(-x)
                 self.two.set(x)
                 self.zed.set(x)
-                if y != 0:)
+                if y != 0:
                     self.five.set(-y)
                     self.three.set(y)
                 else:
