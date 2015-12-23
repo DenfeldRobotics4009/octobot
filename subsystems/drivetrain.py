@@ -90,3 +90,15 @@ class Drivetrain(Subsystem):
                 self.three.set(y)
                 self.two.set(y)
                 self.zed.set(-y)
+
+            #not entirely sure if this is throttle or twist. Gonna have to figure
+            #that out on line 62
+            elif z > 0.0625 or z < -0.0625:
+                self.zed.set(z)
+                self.one.set(z)
+                self.two.set(z)
+                self.three.set(z)
+                self.four.set(z)
+                self.five.set(z)
+                self.six.set(z)
+                self.seven.set(z)
