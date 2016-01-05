@@ -56,10 +56,22 @@ class Drivetrain(Subsystem):
     def driveJoystick(self, joystick):
         #Start precision mode
 	    precision = True
+
         #set the axes & pass them to the drive_control utility library
-	    x = drive_control(joystick.getX(), precision)
-	    y = drive_control(joystick.getY(), precision)
-	    z = precision_mode(dead_zone(joystick.getRawAxis(3)*.75, .1), precision)
+        #-----------------------------------------------------------------------
+        #the getX() and getY() bits are both 0 indexed according to the joystick
+        #documentation for WPIlib, so X = 0, Y = 1, Z = 2, twist (supposedly) =
+        #3, etc. The thing is, the default throttle axis is set to 3, and the
+        #default twist axis is set to 2.
+        #So.
+        #When we tested previous versions on the robot with getRawAxis(3), the
+        #throttle would do the things (different joystick setup on Lopez Jr
+        #iirc, so that's part of it).
+        #Now (1/5/16), I've set getRawAxis(2). Works fine.
+
+	    x = drive_control(joystick.getX()*2, precision)
+	    y = drive_control(joystick.getY()*2, precision)
+	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
 
 	    if x>1:
 		    x=1
@@ -69,11 +81,14 @@ class Drivetrain(Subsystem):
 	    self.driveManual(x, y, z)
 
     def driveManual(self, x, y, z):
+
             self.x, self.y, self.z = x, y, z
             self.four.set(x)
             self.seven.set(-x)
             self.five.set(-y)
             self.three.set(y)
+
+            #What happens here works fine. Don't question it.
 
             if x > 0.0625 or x < -0.0625 :
                 self.six.set(-x)
@@ -91,8 +106,6 @@ class Drivetrain(Subsystem):
                 self.two.set(y)
                 self.zed.set(-y)
 
-            #not entirely sure if this is throttle or twist. Gonna have to figure
-            #that out on line 62
             elif z > 0.0625 or z < -0.0625:
                 self.zed.set(z)
                 self.one.set(z)
@@ -102,3 +115,15 @@ class Drivetrain(Subsystem):
                 self.five.set(z)
                 self.six.set(z)
                 self.seven.set(z)
+
+            #if all the joystick inputs aren't doing the things, set all the
+            #motors to 0
+            else:
+                self.zed.set(0)
+                self.one.set(0)
+                self.two.set(0)
+                self.three.set(0)
+                self.four.set(0)
+                self.five.set(0)
+                self.six.set(0)
+                self.seven.set(0)
