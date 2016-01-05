@@ -93,16 +93,16 @@ class Drivetrain(Subsystem):
             if x > 0.0625 or x < -0.0625 :
                 self.six.set(-x)
                 self.one.set(-x)
-                self.four.set(x)
-                self.seven.set(-x)
+                self.four.set(x*.8)
+                self.seven.set(-x*.8)
                 self.two.set(x)
                 self.zed.set(x)
 
             elif y > 0.0625 or y < -0.0625:
                 self.six.set(-y)
                 self.one.set(y)
-                self.five.set(-y)
-                self.three.set(y)
+                self.five.set(-y*.8)
+                self.three.set(y*.8)
                 self.two.set(y)
                 self.zed.set(-y)
 
