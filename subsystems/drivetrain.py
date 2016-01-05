@@ -36,14 +36,14 @@ class Drivetrain(Subsystem):
         self.rotation = 0
 
         #Motor definitions
-        self.one = wpilib.CANTalon(1)
-        self.six = wpilib.CANTalon(6)
         self.zed = wpilib.CANTalon(0)
+        self.one = wpilib.CANTalon(1)
         self.two = wpilib.CANTalon(2)
-        self.seven = wpilib.CANTalon(7)
+        self.three = wpilib.CANTalon(3)
         self.four = wpilib.CANTalon(4)
         self.five = wpilib.CANTalon(5)
-        self.three = wpilib.CANTalon(3)
+        self.six = wpilib.CANTalon(6)
+        self.seven = wpilib.CANTalon(7)
 
     def initDefaultCommand(self):
         '''When no other command is running, let the operator drive around using the joystick.'''
