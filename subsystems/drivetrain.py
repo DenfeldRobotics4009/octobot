@@ -110,9 +110,9 @@ class Drivetrain(Subsystem):
                 self.zed.set(z)
                 self.one.set(z)
                 self.two.set(z)
-                self.three.set(z)
+                self.three.set(-z)
                 self.four.set(z)
-                self.five.set(z)
+                self.five.set(-z)
                 self.six.set(z)
                 self.seven.set(z)
 
