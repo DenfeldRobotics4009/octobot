@@ -1,4 +1,4 @@
-__author__ = ' '
+__author__ = 'nikolojedison'
 
 #May need more libraries in the future, esp. once everything else is properly implemented.
 import wpilib
@@ -12,10 +12,11 @@ from commands.record_macro import RecordMacro
 
 class OI:
     """Button mapping goes here."""
-    
+
     def __init__(self, robot):
 
-        #Currently a single-joystick setup. May want to change that later if subsystems are added.
+        #Currently a single-joystick setup. May want to change that later if
+        #subsystems are added.
         self.stick = wpilib.Joystick(0)
         self.smart_dashboard = NetworkTable.getTable("SmartDashboard")
 
@@ -32,7 +33,7 @@ class OI:
         ten = JoystickButton(self.stick, 10)
         eleven = JoystickButton(self.stick, 11)
         twelve = JoystickButton(self.stick, 12)
-  
+
     def getStick(self):
         """Drive joystick."""
         return self.stick
