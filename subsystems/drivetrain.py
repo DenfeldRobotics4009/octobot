@@ -83,10 +83,10 @@ class Drivetrain(Subsystem):
     def driveManual(self, x, y, z):
 
             self.x, self.y, self.z = x, y, z
-            self.four.set(x)
-            self.seven.set(-x)
-            self.five.set(-y)
-            self.three.set(y)
+            self.four.set(x*.8)
+            self.seven.set(-x*.8)
+            self.five.set(-y*.8)
+            self.three.set(y*.8)
 
             #What happens here works fine. Don't question it.
 
