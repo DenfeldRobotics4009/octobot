@@ -28,7 +28,7 @@ class Drivetrain(Subsystem):
         super().__init__()
         self.robot = robot
 
-        self.gyro = GyroDummy()
+        self.gyroAngle = IMUSimple()
 
         #Gyro definitions, I think...
         self.x = 0
@@ -48,6 +48,9 @@ class Drivetrain(Subsystem):
         self.drive_diagonal = wpilib.RobotDrive(self.zed, self.two, self.six, self.one)
         self.drive_x = wpilib.RobotDrive(self.three, self.five)
         self.drive_y = wpilib.RobotDrive(self.four, self.seven)
+
+        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
+        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
 
     def initDefaultCommand(self):
         '''When no other command is running, let the operator drive around using the joystick.'''
@@ -85,11 +88,11 @@ class Drivetrain(Subsystem):
 	    self.driveManual(x, y, z)
 
     #def driveManual(self, x, y, z):
-    def driveManual(self, x, y, rotation):
+    def driveManual(self, x, y, rotation, gyroAngle):
         self.x, self.y, self.rotation = x, y, rotation
-        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, 0)
-        self.drive_x.arcadeDrive(x, rotation)
-        self.drive_y.arcadeDrive(y, rotation)
+        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, gyroAngle)
+        self.drive_x.arcadeDrive(y, rotation)
+        self.drive_y.arcadeDrive(x, rotation)
 
             #self.x, self.y, self.z = x, y, z
             #self.four.set(x*.8)
