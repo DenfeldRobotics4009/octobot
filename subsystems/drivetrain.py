@@ -6,7 +6,7 @@ from wpilib.command import Subsystem
 
 from utilities.drive_control import *
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
-#from utilities.imu_simple import IMUSimple
+from utilities.imu_simple import IMUSimple
 
 class GyroDummy:
     """Makes the sim happy. Written by Aux, copied from 2015 code"""
