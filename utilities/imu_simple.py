@@ -28,7 +28,7 @@ class IMUSimple(threading.Thread):
             return yaw, pitch, roll, compass
 
     def __init__(self):
-        self.serial = serial.Serial(1, 57500)
+        self.serial = serial.Serial()
         super().__init__(name="IMU Listener", daemon=True)
         self.start()
         self.mutex = threading.RLock()
@@ -67,5 +67,3 @@ class IMUSimple(threading.Thread):
     def getCompass(self):
         with self.mutex:
             return self.compass
-        #if we can get compass we can likely get the field-oriented setup going a lot easier. Depends on how everything works, though. 
-        #Also, I forsee some weirdness with field alignment between matches...

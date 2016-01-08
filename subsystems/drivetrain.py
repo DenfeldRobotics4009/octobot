@@ -28,14 +28,11 @@ class Drivetrain(Subsystem):
         super().__init__()
         self.robot = robot
 
-      #  if robot.isReal():
-       #     self.gyro = IMUSimple()
-       # else:
-       #     self.gyro = GyroDummy()
-
-        self.gyro = GyroDummy()
-
-        #Gyro definitions, I think...
+        #if robot.isReal():
+        #    self.gyro = IMUSimple()
+        #else:
+        #    self.gyro = GyroDummy()
+        self.gyro = IMUSimple()
         self.x = 0
         self.y = 0
         self.rotation = 0
@@ -84,8 +81,7 @@ class Drivetrain(Subsystem):
 	    x = drive_control(joystick.getX()*2, precision)
 	    y = drive_control(joystick.getY()*2, precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
-	    #a = self.gyro.getYaw()
-	    a = 0
+	    a = self.gyro.getCompass()
 	    self.driveManual(x, y, z, a)
 	    if x>1:
 		    x=1
