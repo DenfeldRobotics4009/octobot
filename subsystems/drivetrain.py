@@ -82,7 +82,7 @@ class Drivetrain(Subsystem):
 	    x = drive_control(joystick.getX()*2, precision)
 	    y = drive_control(joystick.getY()*2, precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
-	    a = self.gyro.getRoll()
+	    a = self.gyro.getPitch()
 	    self.driveManual(x, y, z, a)
 	    if x>1:
 		    x=1
