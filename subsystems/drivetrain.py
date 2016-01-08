@@ -95,7 +95,7 @@ class Drivetrain(Subsystem):
     def driveManual(self, x, y, rotation, a):
         self.x, self.y, self.rotation, self.a = x, y, rotation, a
         self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, a)
-        self.drive_x.arcadeDrive(y, rotation)
+        self.drive_x.arcadeDrive(y, -rotation)
         self.drive_y.arcadeDrive(x, rotation)
 
             #self.x, self.y, self.z = x, y, z
