@@ -99,7 +99,7 @@ class Drivetrain(Subsystem):
         self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, a)
         self.drive_x.arcadeDrive(y, -rotation)
         self.drive_y.arcadeDrive(x, rotation)
-        if rotation < -0.0625 or > 0.0625:
+        if rotation < -0.0625 or rotation > 0.0625:
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, True)
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
         else:
