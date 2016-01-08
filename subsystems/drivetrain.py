@@ -28,7 +28,12 @@ class Drivetrain(Subsystem):
         super().__init__()
         self.robot = robot
 
-        self.gyroAngle = IMUSimple()
+      #  if robot.isReal():
+       #     self.gyro = IMUSimple()
+       # else:
+       #     self.gyro = GyroDummy()
+
+        self.gyro = GyroDummy()
 
         #Gyro definitions, I think...
         self.x = 0
@@ -81,11 +86,14 @@ class Drivetrain(Subsystem):
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
 	    a = self.gyro.getYaw()
 	    self.driveManual(x, y, z)
-
+	    if x>1:
+		    x=1
+	    elif x<-1:
+		    x=-1
     #def driveManual(self, x, y, z):
-    def driveManual(self, x, y, rotation, gyroAngle):
-        self.x, self.y, self.rotation = x, y, rotation
-        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, gyroAngle)
+    def driveManual(self, x, y, rotation, a):
+        self.x, self.y, self.rotation, self.a = x, y, rotation, a
+        self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, a)
         self.drive_x.arcadeDrive(y, rotation)
         self.drive_y.arcadeDrive(x, rotation)
 
