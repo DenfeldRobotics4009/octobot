@@ -6,6 +6,7 @@ from wpilib.command import Subsystem
 
 from utilities.drive_control import *
 from commands.manual.octo_drive_with_joystick import OctoDriveWithJoystick
+from commands.auto.gyro_reset import GyroReset
 from utilities.imu_simple import IMUSimple
 
 class GyroDummy:
@@ -82,7 +83,7 @@ class Drivetrain(Subsystem):
 	    x = drive_control(joystick.getX()*2, precision)
 	    y = drive_control(joystick.getY()*2, precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
-	    a = self.gyro.getPitch()
+	    a = self.gyro.getYaw()
 	    self.driveManual(x, y, z, a)
 	    if x>1:
 		    x=1
