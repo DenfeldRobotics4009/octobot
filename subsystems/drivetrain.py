@@ -80,8 +80,8 @@ class Drivetrain(Subsystem):
         #iirc, so that's part of it).
         #Now (1/5/16), I've set getRawAxis(2). Works fine.
 
-	    x = drive_control(joystick.getX()*2, precision)
-	    y = drive_control(joystick.getY()*2, precision)
+	    x = drive_control(joystick.getX()*1.25, precision)
+	    y = drive_control(joystick.getY()*1.25, precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
 	    a = self.gyro.getYaw()
 	    self.driveManual(x, y, z)
