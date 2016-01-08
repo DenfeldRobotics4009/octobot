@@ -82,7 +82,7 @@ class Drivetrain(Subsystem):
 	    x = drive_control(joystick.getX()*2, precision)
 	    y = drive_control(joystick.getY()*2, precision)
 	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
-	    a = self.gyro.getCompass()
+	    a = self.gyro.getYaw()
 	    self.driveManual(x, y, z, a)
 	    if x>1:
 		    x=1
@@ -94,8 +94,8 @@ class Drivetrain(Subsystem):
     def driveManual(self, x, y, rotation, a):
         self.x, self.y, self.rotation, self.a = x, y, rotation, a
         self.drive_diagonal.mecanumDrive_Cartesian(x, y, -rotation, a)
-        self.drive_x.arcadeDrive(y, rotation)
-        self.drive_y.arcadeDrive(x, -rotation)
+        self.drive_x.arcadeDrive(y, rotation, a)
+        self.drive_y.arcadeDrive(x, -rotation, a)
         if rotation < -0.0625 or rotation > 0.0625:
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, True)
