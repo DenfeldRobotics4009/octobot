@@ -91,12 +91,20 @@ class Drivetrain(Subsystem):
 		    x=1
 	    elif x<-1:
 		    x=-1
+
+    #invert zed and one for rotation
     #def driveManual(self, x, y, z):
     def driveManual(self, x, y, rotation, a):
         self.x, self.y, self.rotation, self.a = x, y, rotation, a
         self.drive_diagonal.mecanumDrive_Cartesian(x, y, rotation, a)
         self.drive_x.arcadeDrive(y, -rotation)
         self.drive_y.arcadeDrive(x, rotation)
+        if rotation < 0.0625 or > 0.0625:
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, True)
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
+        else:
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, False)
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, False)
 
             #self.x, self.y, self.z = x, y, z
             #self.four.set(x*.8)
