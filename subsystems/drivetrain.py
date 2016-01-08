@@ -102,11 +102,11 @@ class Drivetrain(Subsystem):
         if rotation < -0.0625 or rotation > 0.0625:
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, True)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, False)
         else:
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, False)
             self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, False)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, False)
+            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
 
             #self.x, self.y, self.z = x, y, z
             #self.four.set(x*.8)
