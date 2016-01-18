@@ -66,7 +66,7 @@ class Drivetrain(Subsystem):
 
     def driveJoystick(self, joystick):
         #Start precision mode
-	    precision = True
+        precision = True
 
         #set the axes & pass them to the drive_control utility library
         #-----------------------------------------------------------------------
@@ -80,15 +80,16 @@ class Drivetrain(Subsystem):
         #iirc, so that's part of it).
         #Now (1/5/16), I've set getRawAxis(2). Works fine.
 
-	    x = drive_control(joystick.getX()*1.25, precision)
-	    y = drive_control(joystick.getY()*1.25, precision)
-	    z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
-	    a = 0
-	    self.driveManual(x, y, z, a)
-	    if x>1:
-		    x=1
-	    elif x<-1:
-		    x=-1
+        x = drive_control(joystick.getX()*1.25, precision)
+        y = drive_control(joystick.getY()*1.25, precision)
+        z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
+        a = 0
+
+        self.driveManual(x, y, z, a)
+        if x>1:
+            x=1
+        elif x<-1:
+            x=-1
 
     #def driveManual(self, x, y, z):
     def driveManual(self, x, y, rotation, a):

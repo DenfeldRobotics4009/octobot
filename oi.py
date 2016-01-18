@@ -11,29 +11,29 @@ from commands.play_macro import PlayMacro
 from commands.record_macro import RecordMacro
 
 class OI:
-    """Button mapping goes here."""
+	"""Button mapping goes here."""
 
-    def __init__(self, robot):
+	def __init__(self, robot):
 
-        #Currently a single-joystick setup. May want to change that later if
-        #subsystems are added.
-        self.stick = wpilib.Joystick(0)
-        self.smart_dashboard = NetworkTable.getTable("SmartDashboard")
+		#Currently a single-joystick setup. May want to change that later if
+		#subsystems are added.
+		self.stick = wpilib.Joystick(0)
+		self.smart_dashboard = NetworkTable.getTable("SmartDashboard")
 
-        #Buttons based off of Logitech Attack 3 joystick used on Delta.
-        trigger = JoystickButton(self.stick, 1)
-        thumb = JoystickButton(self.stick, 2)
-        three = JoystickButton(self.stick, 3)
-        four = JoystickButton(self.stick, 4)
-        five = JoystickButton(self.stick, 5)
-        six = JoystickButton(self.stick, 6)
-        seven = JoystickButton(self.stick, 7)
-        eight = JoystickButton(self.stick, 8)
-        nine = JoystickButton(self.stick, 9)
-        ten = JoystickButton(self.stick, 10)
-        eleven = JoystickButton(self.stick, 11)
-        twelve = JoystickButton(self.stick, 12)
+		#Buttons based off of Logitech Attack 3 joystick used on Delta.
+		trigger = JoystickButton(self.stick, 1)
+		thumb = JoystickButton(self.stick, 2)
+		three = JoystickButton(self.stick, 3)
+		four = JoystickButton(self.stick, 4)
+		five = JoystickButton(self.stick, 5)
+		six = JoystickButton(self.stick, 6)
+		seven = JoystickButton(self.stick, 7)
+		eight = JoystickButton(self.stick, 8)
+		nine = JoystickButton(self.stick, 9)
+		ten = JoystickButton(self.stick, 10)
+		eleven = JoystickButton(self.stick, 11)
+		twelve = JoystickButton(self.stick, 12)
 
-    def getStick(self):
-        """Drive joystick."""
-        return self.stick
+	def getStick(self):
+		"""Drive joystick."""
+		return self.stick
