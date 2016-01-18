@@ -48,14 +48,6 @@ class Drivetrain(Subsystem):
         self.six = wpilib.CANTalon(6)
         self.seven = wpilib.CANTalon(7)
 
-        self.drive_diagonal = wpilib.RobotDrive(self.zed, self.two, self.six, self.one)
-        self.drive_x = wpilib.RobotDrive(self.three, self.five)
-        self.drive_y = wpilib.RobotDrive(self.four, self.seven)
-
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontRight, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
-        self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
-
     def initDefaultCommand(self):
         '''When no other command is running, let the operator drive around using the joystick.'''
         self.setDefaultCommand(OctoDriveWithJoystick(self.robot))
@@ -85,69 +77,55 @@ class Drivetrain(Subsystem):
         z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
         a = 0
 
-        self.driveManual(x, y, z, a)
+        self.driveManual(x, y, a, z)
         if x>1:
             x=1
         elif x<-1:
             x=-1
 
-    #def driveManual(self, x, y, z):
-    def driveManual(self, x, y, rotation, a):
-        self.x, self.y, self.rotation, self.a = x, y, rotation, a
-        self.drive_diagonal.mecanumDrive_Cartesian(x, y, -rotation, a)
-        self.drive_x.arcadeDrive(y, rotation, a)
-        self.drive_y.arcadeDrive(x, -rotation, a)
-        if rotation < -0.0625 or rotation > 0.0625:
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, True)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, True)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, False)
-        else:
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearLeft, False)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kFrontLeft, False)
-            self.drive_diagonal.setInvertedMotor(self.drive_diagonal.MotorType.kRearRight, True)
-
-            #self.x, self.y, self.z = x, y, z
-        #    self.four.set(x*.8)
-        #    self.seven.set(-x*.8)
-        #    self.five.set(-y*.8)
-        #    self.three.set(y*.8)
+    def driveManual(self, x, y, a, z):
+        self.x, self.y, self.a, self.z = x, y, a, z
+        self.four.set(x*.8)
+        self.seven.set(-x*.8)
+        self.five.set(-y*.8)
+        self.three.set(y*.8)
 
             #What happens here works fine. Don't question it.
 
-        #    if x > 0.0625 or x < -0.0625 :
-        #        self.six.set(-x)
-        #        self.one.set(-x)
-        #        self.four.set(x*.8)
-        #        self.seven.set(-x*.8)
-        #        self.two.set(x)
-        #        self.zed.set(x)
+        if x > 0.0625 or x < -0.0625 :
+            self.six.set(-x)
+            self.one.set(-x)
+            self.four.set(x*.8)
+            self.seven.set(-x*.8)
+            self.two.set(x)
+            self.zed.set(x)
 
-        #    elif y > 0.0625 or y < -0.0625:
-        #        self.six.set(-y)
-        #        self.one.set(y)
-        #        self.five.set(-y*.8)
-        #        self.three.set(y*.8)
-        #        self.two.set(y)
-        #        self.zed.set(-y)
+        elif y > 0.0625 or y < -0.0625:
+            self.six.set(-y)
+            self.one.set(y)
+            self.five.set(-y*.8)
+            self.three.set(y*.8)
+            self.two.set(y)
+            self.zed.set(-y)
 
-        #    elif z > 0.0625 or z < -0.0625:
-        #        self.zed.set(z)
-        #        self.one.set(z)
-        #        self.two.set(z)
-        #        self.three.set(-z)
-        #        self.four.set(z)
-        #        self.six.set(z)
-        #        self.five.set(-z)
-        #        self.seven.set(z)
+        elif z > 0.0625 or z < -0.0625:
+            self.zed.set(z)
+            self.one.set(z)
+            self.two.set(z)
+            self.three.set(-z)
+            self.four.set(z)
+            self.six.set(z)
+            self.five.set(-z)
+            self.seven.set(z)
 
             #if all the joystick inputs aren't doing the things, set all the
             #motors to 0
-        #    else:
-        #        self.zed.set(0)
-        #        self.one.set(0)
-        #        self.two.set(0)
-        #        self.three.set(0)
-        #        self.four.set(0)
-        #        self.five.set(0)
-        #        self.six.set(0)
-        #        self.seven.set(0)
+        else:
+            self.zed.set(0)
+            self.one.set(0)
+            self.two.set(0)
+            self.three.set(0)
+            self.four.set(0)
+            self.five.set(0)
+            self.six.set(0)
+            self.seven.set(0)
