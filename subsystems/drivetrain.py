@@ -12,6 +12,7 @@ from utilities.imu_simple import IMUSimple
 class GyroDummy:
     """Makes the sim happy. Written by Aux, copied from 2015 code"""
     n = 0
+
     def getYaw(self):
         n = self.n
         n = n+1
@@ -33,7 +34,7 @@ class Drivetrain(Subsystem):
         #    self.gyro = IMUSimple()
         #else:
         #    self.gyro = GyroDummy()
-        self.gyro = IMUSimple()
+        self.gyro = IMUSimple() #K, so this means that the last time we ran this code we were trying to use field-oriented.
         self.x = 0
         self.y = 0
         self.rotation = 0
@@ -74,7 +75,7 @@ class Drivetrain(Subsystem):
 
         x = drive_control(joystick.getX()*1.25, precision)
         y = drive_control(joystick.getY()*1.25, precision)
-        z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision)
+	z = precision_mode(dead_zone(joystick.getRawAxis(2)*2, .1), precision) #I'm gonna be perfectly honest: I have no idea why I didn't just write an additional function similar to drive_control for this
         a = 0
 
         self.driveManual(x, y, a, z)
@@ -84,6 +85,7 @@ class Drivetrain(Subsystem):
             x=-1
 
     def driveManual(self, x, y, a, z):
+
         self.x, self.y, self.a, self.z = x, y, a, z
         self.four.set(x*.8)
         self.seven.set(-x*.8)
