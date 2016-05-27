@@ -92,7 +92,7 @@ class Drivetrain(Subsystem):
         self.five.set(-y*.8)
         self.three.set(y*.8)
 
-            #What happens here works fine. Don't question it.
+        #What happens here works fine. Don't question it.
 
         if x > 0.0625 or x < -0.0625 :
             self.six.set(-x)
